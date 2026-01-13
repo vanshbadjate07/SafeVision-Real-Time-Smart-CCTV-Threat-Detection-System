@@ -52,9 +52,5 @@ SafeVision is an advanced AI-powered surveillance system designed to enhance sec
     *   **Arm System:** Click "Start Away Mode" or "Enable Night Mode".
     *   **Enable Weapon Scan:** Toggle "Enable Weapon Detection" for high-threat monitoring.
 
-## ⚠️ Disclaimer
-
-This project is intended for educational and research purposes. While it aims for high accuracy, it should not be the sole reliance for critical safety applications.
-
 ---
 **Developed by Vansh Badjate**
