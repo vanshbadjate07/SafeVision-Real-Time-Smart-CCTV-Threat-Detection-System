@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeVision - AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background-glow"></div>
+    <div class="app-container">
+        <header>
+            <div class="logo-section">
+                <i class="fa-solid fa-shield-halved logo-icon"></i>
+                <h1>SafeVision - AI <span class="badge">LIVE</span></h1>
+            </div>
+            <p class="subtitle">AI-Powered Perimeter Defense System</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Video Feed Section -->
+            <div class="video-card glass-panel">
+                <div class="video-wrapper" id="videoContainer">
+                    <img src="{{ url_for('video_feed') }}" id="videoFeed" alt="Live Security Feed">
+                    <canvas id="roiCanvas"></canvas>
+                    <div class="overlay-ui">
+                        <div class="status-pill" id="systemStatusPill">
+                            <div class="dot"></div>
+                            <span id="statusTextPill">System Ready</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-controls">
+                    <div class="zone-actions">
+                        <button id="btnAddZone" class="btn-icon" title="Add New Zone"><i class="fa-solid fa-plus"></i>
+                            Add Zone</button>
+                        <button id="btnClearZones" class="btn-icon danger" title="Clear All Zones"><i
+                                class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard / Controls Section -->
+            <div class="dashboard-panel">
+
+                <!-- Alert Banner (Hidden by default) -->
+                <div id="alertBanner" class="alert-banner hidden">
+                    <div class="alert-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <div class="alert-info">
+                        <h2>INTRUDER DETECTED</h2>
+                        <p>Motion detected in restricted zone</p>
+                    </div>
+                    <div class="alert-actions">
+                        <button id="btnDismiss" class="btn btn-success"><i class="fa-solid fa-check"></i> Safe /
+                            Dismiss</button>
+                        <button id="btnDanger" class="btn btn-danger"><i class="fa-solid fa-phone"></i> 112</button>
+                    </div>
+                </div>
+
+                <!-- Main Controls -->
+                <div class="control-card glass-panel">
+                    <h3><i class="fa-solid fa-sliders"></i> System Controls</h3>
+
+                    <div class="main-toggle">
+                        <button id="btnToggleAway" class="btn btn-lg btn-primary">
+                            <i class="fa-solid fa-eye"></i> Start Away Mode
+                        </button>
+                    </div>
+
+                    <div class="main-toggle" style="margin-top: 15px;">
+                        <button id="btnToggleNight" class="btn btn-lg btn-secondary" style="width: 100%;">
+                            <i class="fa-solid fa-moon"></i> Enable Night Mode
+                        </button>
+                    </div>
+
+                    <div class="main-toggle" style="margin-top: 15px;">
+                        <button id="btnToggleWeapon" class="btn btn-lg btn-secondary" style="width: 100%;">
+                            <i class="fa-solid fa-gun"></i> Enable Weapon Detection
+                        </button>
+                    </div>
+
+                    <div class="zone-list-container">
+                        <h4>Active Zones <span id="zoneCount" class="count-badge">0</span></h4>
+                        <ul id="zoneList" class="zone-list">
+                            <!-- Zones will be injected here -->
+                            <li class="empty-state">No zones defined. Add a zone to start monitoring.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
